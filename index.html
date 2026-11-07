@@ -113,8 +113,6 @@ a { color: inherit; }
 .meta { display: flex; gap: 12px; font-size: 11px; color: var(--phone-muted); font-family: var(--font-mono); }
 .bar { height: 5px; background: #333; border-radius: 9px; overflow: hidden; }
 .bar i { display: block; height: 100%; background: var(--lime); border-radius: 9px; }
-.tabbar { display: flex; justify-content: space-around; font-size: 10px; color: var(--phone-muted); padding-top: 6px; border-top: 1px solid #2a2a2c; }
-.tabbar b { color: var(--lime); font-weight: 600; }
 
 /* Sections */
 section { padding-block: 88px; }
@@ -149,11 +147,35 @@ section { padding-block: 88px; }
 
 .prog-row { display: grid; grid-template-columns: 4.5em minmax(0, 1fr) 3em; align-items: center; gap: 10px; }
 .prog-row .tc { text-align: right; color: var(--phone-muted); }
+.prog-row.total { grid-template-columns: auto minmax(0, 1fr) 3em; margin-bottom: 4px; }
 
 .journal-date { font-family: var(--font-mono); font-size: 11px; color: var(--phone-muted); }
 .journal p { margin: 0; color: var(--phone-fg); font-size: 13px; line-height: 1.6; }
 .next { border-left: 3px solid var(--violet); padding-left: 10px; }
 .next span { display: block; font-size: 11px; color: var(--phone-muted); }
+
+.search { font-size: 12px; color: var(--phone-muted); background: var(--phone-2); border-radius: 999px; padding: 7px 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips span { font: 500 11px var(--font-mono); color: var(--phone-muted); background: var(--phone-2); border-radius: 999px; padding: 4px 9px; }
+.chips .on { background: var(--lime); color: #121212; }
+.chips .tool { margin-left: auto; color: var(--phone-fg); border: 1px solid #3a3a3e; background: transparent; }
+.loop { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 12px; }
+.loop .tc { margin-left: auto; color: var(--phone-muted); }
+.loop-tag { font-size: 11px; font-weight: 600; color: #121212; background: var(--violet-soft); border-radius: 999px; padding: 2px 8px; }
+.scrub .loop-range { position: absolute; top: -3px; bottom: -3px; left: 38%; width: 22%; border-radius: 4px; background: color-mix(in srgb, var(--violet-soft) 35%, transparent); border: 1px solid var(--violet-soft); }
+.warn { margin: 0; font-size: 12px; font-weight: 600; color: var(--gold); }
+.goal { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; background: var(--phone-2); border-radius: 12px; padding: 9px 12px; }
+.goal .check { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--phone-muted); display: grid; place-items: center; font-size: 10px; }
+.goal.done .check { background: var(--lime); border-color: var(--lime); color: #121212; }
+.goal.done > span:nth-child(2) { color: var(--phone-muted); text-decoration: line-through; }
+.goal .tc { color: var(--phone-muted); font-size: 11px; }
+.goal.late .tc { color: var(--coral); }
+.mood { color: var(--lime); font-weight: 600; }
+.member { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; }
+.member small { color: var(--phone-muted); font-size: 11px; }
+.avatar { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font: 600 12px var(--font-body); color: #121212; }
+.invite { margin-top: 4px; text-align: center; font-size: 12px; font-weight: 600; color: var(--lime); border: 1px dashed #3a3a3e; border-radius: 12px; padding: 8px; }
+.specs { margin: 14px 0 0; font-size: 13px; color: #d6ccff; }
 
 /* Flow */
 .flow { background: var(--ink); color: var(--bg); border-radius: 40px; padding: 64px clamp(20px, 5vw, 64px); }
@@ -230,7 +252,7 @@ footer { padding-block: 40px 56px; }
         <p class="eyebrow">Dance Rehearsal Workspace</p>
         <h1 class="title">練舞人</h1>
         <p class="lede">讓每一次排練，<br>都更靠近舞台。</p>
-        <p class="sub">從舞蹈專案、影片筆記到隊形編排，把每個作品需要的內容，放回同一個地方。</p>
+        <p class="sub">每個舞蹈作品一個專案。練習影片、時間筆記、隊形、目標和日誌都放在裡面，也能邀請團員一起編輯。</p>
         <form class="signup" data-signup novalidate>
           <label for="email-hero">Email</label>
           <input id="email-hero" name="email" type="email" required placeholder="你的 Email" autocomplete="email">
@@ -244,7 +266,8 @@ footer { padding-block: 40px 56px; }
         <div class="screen">
           <div class="status"><span>9:41</span><span>●●● ▮</span></div>
           <div class="app-head"><span class="appicon"></span>練舞人<span class="chip-btn">＋ 新增專案</span></div>
-          <div class="sec-label">最近的專案 <span>3 個進行中</span></div>
+          <div class="search">搜尋專案</div>
+          <div class="sec-label">專案 <span>3 個</span></div>
           <div class="proj">
             <div class="proj-top"><h4>Midnight Groove</h4><small>主歌 B</small></div>
             <div class="meta"><span>02:48</span><span>6 人</span><span>12 則筆記</span></div>
@@ -260,7 +283,6 @@ footer { padding-block: 40px 56px; }
             <div class="meta"><span>01:56</span><span>9 人</span><span>3 則筆記</span></div>
             <div class="bar"><i style="width:15%"></i></div>
           </div>
-          <div class="tabbar"><b>專案</b><span>練習</span><span>隊形</span><span>日誌</span></div>
         </div>
       </div>
     </div>
@@ -268,58 +290,40 @@ footer { padding-block: 40px 56px; }
     <section id="features">
       <div class="sec-head">
         <p class="eyebrow">功能</p>
-        <h2>五個功能，讓排練更清楚。</h2>
+        <h2>練習、隊形、紀錄，都在同一個專案裡。</h2>
       </div>
 
       <div class="bento">
         <article class="feat wide">
           <div>
-            <p class="tag">專案管理</p>
-            <h3>專案集中管理</h3>
-            <p>影片、隊形、筆記與進度都在一起。</p>
+            <p class="tag">練習</p>
+            <h3>跟著影片或 Apple Music 練</h3>
+            <p>從照片匯入練習影片，或直接選 Apple Music 的歌。可以調速度、開鏡像、循環難的片段，在時間點留下筆記。</p>
           </div>
           <div class="vignette" aria-hidden="true">
-            <div class="proj">
-              <div class="proj-top"><h4>Midnight Groove</h4><small>6 人</small></div>
-              <div class="meta"><span>影片 3</span><span>隊形 8</span><span>筆記 12</span></div>
-              <div class="bar"><i style="width:72%"></i></div>
-            </div>
-            <div class="proj">
-              <div class="proj-top"><h4>Summer Cover</h4><small>4 人</small></div>
-              <div class="meta"><span>影片 1</span><span>隊形 4</span><span>筆記 5</span></div>
-              <div class="bar"><i style="width:38%"></i></div>
-            </div>
+            <div class="chips"><span>0.5×</span><span>0.75×</span><span class="on">0.8×</span><span>0.9×</span><span>1×</span><span>1.5×</span><span class="tool">鏡像</span></div>
+            <div class="loop"><span class="loop-tag">循環中</span><span>片段 2 · 副歌</span><span class="tc">0:42 – 1:05</span></div>
+            <div class="scrub"><i></i><span class="loop-range"></span><b style="left:7%;background:var(--lime)"></b><b style="left:18%;background:var(--violet)"></b><b style="left:33%;background:var(--coral)"></b></div>
+            <div class="note"><span class="dot" style="background:var(--lime)"></span><span class="tc">0:08</span><span>第二個八拍，手臂再收快一點</span></div>
+            <div class="note"><span class="dot" style="background:var(--violet)"></span><span class="tc">0:23</span><span>胸推放大，手肘打開</span></div>
+            <div class="note"><span class="dot" style="background:var(--coral)"></span><span class="tc">0:42</span><span>轉圈留頭，重心放低</span></div>
           </div>
         </article>
 
         <article class="feat wide">
           <div>
-            <p class="tag">練習筆記</p>
-            <h3>直接標記時間點</h3>
-            <p>動作問題與修正，一看就知道。</p>
-          </div>
-          <div class="vignette" aria-hidden="true">
-            <div class="scrub"><i></i><b style="left:7%;background:var(--lime)"></b><b style="left:18%;background:var(--violet)"></b><b style="left:33%;background:var(--coral)"></b><b style="left:51%;background:var(--gold)"></b></div>
-            <div class="note"><span class="dot" style="background:var(--lime)"></span><span class="tc">00:08.5</span><span>第二個八拍，手臂再收快一點</span></div>
-            <div class="note"><span class="dot" style="background:var(--violet)"></span><span class="tc">00:23.4</span><span>胸推放大，手肘打開</span></div>
-            <div class="note"><span class="dot" style="background:var(--coral)"></span><span class="tc">00:42.1</span><span>轉圈留頭，重心放低</span></div>
-          </div>
-        </article>
-
-        <article class="feat">
-          <div>
-            <p class="tag">隊形編排</p>
-            <h3>隊形清楚到位</h3>
-            <p>拖曳位置，快速切換每個段落。</p>
+            <p class="tag">隊形</p>
+            <h3>隊形跟著音樂換</h3>
+            <p>拖曳舞者排位置，把每個隊形設在歌曲的時間點，播放時自動切換。舞者站太近會提醒你。</p>
           </div>
           <div class="vignette">
-            <div class="seg" role="group" aria-label="切換段落">
-              <button type="button" aria-pressed="true" data-seg="0">前奏</button>
-              <button type="button" aria-pressed="false" data-seg="1">主歌</button>
-              <button type="button" aria-pressed="false" data-seg="2">副歌</button>
+            <div class="seg" role="group" aria-label="切換隊形">
+              <button type="button" aria-pressed="true" data-seg="0">0:00 前奏</button>
+              <button type="button" aria-pressed="false" data-seg="1">0:32 主歌</button>
+              <button type="button" aria-pressed="false" data-seg="2">1:05 副歌</button>
             </div>
             <div class="stage" aria-hidden="true">
-              <span class="stage-front">舞台前方</span>
+              <span class="stage-front">前方</span>
               <span class="dancer" style="background:var(--lime)">1</span>
               <span class="dancer" style="background:var(--violet-soft)">2</span>
               <span class="dancer" style="background:var(--coral)">3</span>
@@ -327,34 +331,48 @@ footer { padding-block: 40px 56px; }
               <span class="dancer" style="background:var(--gold)">5</span>
               <span class="dancer" style="background:var(--pink)">6</span>
             </div>
+            <p class="warn" data-warn hidden></p>
           </div>
         </article>
 
         <article class="feat">
           <div>
-            <p class="tag">練習進度</p>
-            <h3>掌握練習進度</h3>
-            <p>知道完成了什麼，接下來要練什麼。</p>
+            <p class="tag">目標</p>
+            <h3>排好每個目標的日期</h3>
+            <p>用清單或月曆看進度，逾期的目標一眼就看到。</p>
           </div>
           <div class="vignette" aria-hidden="true">
-            <div class="prog-row"><span>前奏</span><div class="bar"><i style="width:100%"></i></div><span class="tc">100%</span></div>
-            <div class="prog-row"><span>主歌 A</span><div class="bar"><i style="width:85%"></i></div><span class="tc">85%</span></div>
-            <div class="prog-row"><span>主歌 B</span><div class="bar"><i style="width:60%"></i></div><span class="tc">60%</span></div>
-            <div class="prog-row"><span>副歌</span><div class="bar"><i style="width:30%"></i></div><span class="tc">30%</span></div>
-            <div class="prog-row"><span>Ending</span><div class="bar"><i style="width:0%"></i></div><span class="tc">0%</span></div>
+            <div class="prog-row total"><span>整體完成度</span><div class="bar"><i style="width:60%"></i></div><span class="tc">60%</span></div>
+            <div class="goal done"><span class="check">✓</span><span>主歌 A 走位</span><span class="tc">11/1–11/5</span></div>
+            <div class="goal"><span class="check"></span><span>副歌轉位</span><span class="tc">11/6–11/12</span></div>
+            <div class="goal late"><span class="check"></span><span>Ending 定格</span><span class="tc">已逾期</span></div>
           </div>
         </article>
 
         <article class="feat">
           <div>
-            <p class="tag">練習日誌</p>
-            <h3>留下每次累積</h3>
-            <p>記錄狀態與下一次練習重點。</p>
+            <p class="tag">日誌</p>
+            <h3>留下每次練習</h3>
+            <p>記下練了多久、狀態如何，再連到當天的時間筆記。</p>
           </div>
           <div class="vignette journal" aria-hidden="true">
-            <span class="journal-date">11/05 週三 · 練習 90 分鐘</span>
-            <p>副歌第一段終於對齊拍子，地板動作還是太慢，膝蓋要記得護好。</p>
-            <div class="next"><span>下次重點</span>副歌轉位、Ending 定格</div>
+            <span class="journal-date">11/7 · 1 小時 30 分 · <b class="mood">順利</b></span>
+            <p>副歌第一段終於對齊拍子，地板動作還是太慢。</p>
+            <div class="next"><span>關聯筆記</span>0:42 · 轉圈留頭，重心放低</div>
+          </div>
+        </article>
+
+        <article class="feat">
+          <div>
+            <p class="tag">共同編輯</p>
+            <h3>邀請團員一起編輯</h3>
+            <p>傳送邀請連結，大家在同一個專案裡改隊形、寫筆記。</p>
+          </div>
+          <div class="vignette" aria-hidden="true">
+            <div class="member"><span class="avatar" style="background:var(--lime)">E</span><span>Emily</span><small>擁有者</small></div>
+            <div class="member"><span class="avatar" style="background:var(--violet-soft)">M</span><span>Mia</span><small>共同編輯</small></div>
+            <div class="member"><span class="avatar" style="background:var(--gold)">J</span><span>Jay</span><small>共同編輯</small></div>
+            <div class="invite">＋ 邀請共同編輯者</div>
           </div>
         </article>
       </div>
@@ -372,22 +390,22 @@ footer { padding-block: 40px 56px; }
             <span class="step-n">1</span>
             <p class="when">排練前</p>
             <h3>把作品準備好</h3>
-            <p>建立舞蹈專案、匯入練習影片，再把音樂拆成清楚的段落。開始排練前，所有人都知道作品的結構。</p>
-            <div class="pills"><span>建立專案</span><span>匯入影片</span><span>拆分段落</span></div>
+            <p>建立舞蹈專案，匯入練習影片或選一首 Apple Music 的歌，再邀請團員加入。開始排練前，所有人都看得到同一份作品。</p>
+            <div class="pills"><span>建立專案</span><span>匯入影片或音樂</span><span>邀請團員</span></div>
           </div>
           <div class="step">
             <span class="step-n">2</span>
             <p class="when">排練中</p>
             <h3>專注現在的問題</h3>
-            <p>直接在影片時間點留下筆記，切換段落與隊形，同時更新練習進度。需要處理的內容就在眼前。</p>
-            <div class="pills"><span>時間點筆記</span><span>隊形切換</span><span>進度更新</span></div>
+            <p>放慢速度、循環難的片段，在時間點留下筆記。播放時隊形會跟著音樂切換，誰站錯位置馬上看得到。</p>
+            <div class="pills"><span>速度與鏡像</span><span>循環片段</span><span>時間筆記</span><span>隊形跟著音樂</span></div>
           </div>
           <div class="step">
             <span class="step-n">3</span>
             <p class="when">排練後</p>
             <h3>把成果留給下一次</h3>
-            <p>寫下這次的練習狀態與心得，整理尚未完成的重點。下一次打開專案，就能直接接著前進。</p>
-            <div class="pills"><span>練習日誌</span><span>整理重點</span><span>下次目標</span></div>
+            <p>寫下練了多久、狀態和心得，勾掉完成的目標。下一次打開專案，就能直接接著前進。</p>
+            <div class="pills"><span>練習日誌</span><span>完成目標</span><span>月曆進度</span></div>
           </div>
         </div>
       </div>
@@ -406,6 +424,7 @@ footer { padding-block: 40px 56px; }
           <button type="submit">加入測試名單</button>
         </form>
           <p class="fine" aria-live="polite">只寄送測試與上線通知，隨時可以退出。</p>
+          <p class="specs">iPhone 與 iPad · iOS 26 以上 · 繁體中文、English、日本語</p>
         </div>
       </div>
     </section>
@@ -466,17 +485,25 @@ document.querySelectorAll("[data-signup]").forEach(form => {
 
 const formations = [
   [[20,72],[36,72],[52,72],[68,72],[84,72],[52,40]],
-  [[30,35],[70,35],[20,60],[50,60],[80,60],[50,85]],
+  [[46,35],[52,38],[20,60],[50,60],[80,60],[50,85]],
   [[50,30],[35,50],[65,50],[20,72],[50,72],[80,72]]
 ];
 const dancers = document.querySelectorAll(".dancer");
 const segButtons = document.querySelectorAll("[data-seg]");
+const warn = document.querySelector("[data-warn]");
 function showFormation(i) {
   formations[i].forEach(([x, y], d) => {
     dancers[d].style.left = x + "%";
     dancers[d].style.top = y + "%";
   });
   segButtons.forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.seg === i)));
+  const close = new Set();
+  formations[i].forEach(([x1, y1], a) => formations[i].forEach(([x2, y2], b) => {
+    if (a < b && Math.hypot(x1 - x2, (y1 - y2) * 0.625) < 9) { close.add(a); close.add(b); }
+  }));
+  warn.hidden = close.size === 0;
+  warn.textContent = `有 ${close.size} 位舞者太靠近`;
+  dancers.forEach((d, n) => d.style.outline = close.has(n) ? "2px solid var(--gold)" : "");
 }
 segButtons.forEach(b => b.addEventListener("click", () => showFormation(+b.dataset.seg)));
 showFormation(0);
