@@ -178,19 +178,16 @@ section { padding-block: 88px; }
 .specs { margin: 14px 0 0; font-size: 13px; color: #d6ccff; }
 
 /* Flow */
-.flow { background: var(--ink); color: var(--bg); border-radius: 40px; padding: 64px clamp(20px, 5vw, 64px); }
-.flow .sec-head p { color: color-mix(in srgb, var(--bg) 68%, transparent); }
-.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; counter-reset: s; position: relative; }
+.flow { background: #17161d; color: #f3f3ef; border: 1px solid #2c2a36; border-radius: 40px; padding: 64px clamp(20px, 5vw, 64px); }
+.flow .sec-head p { color: #b9b7c4; }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; position: relative; }
 .step { display: grid; gap: 10px; align-content: start; min-width: 0; }
-.step-n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font: 600 16px var(--font-mono); color: #121212; }
-.step:nth-child(1) .step-n { background: var(--violet-soft); }
-.step:nth-child(2) .step-n { background: var(--violet); color: #fff; }
-.step:nth-child(3) .step-n { background: var(--lime); }
-.step .when { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; color: color-mix(in srgb, var(--bg) 60%, transparent); margin: 6px 0 0; }
+.step-n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font: 600 16px var(--font-mono); color: #121212; background: var(--lime); }
+.step .when { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; color: #9a98a6; margin: 6px 0 0; }
 .step h3 { font-family: var(--font-display); font-weight: 900; font-size: 24px; margin: 0; }
-.step p { margin: 0; color: color-mix(in srgb, var(--bg) 72%, transparent); font-size: 15px; }
+.step p { margin: 0; color: #c7c5d1; font-size: 15px; }
 .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-.pills span { font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--bg) 25%, transparent); }
+.pills span { font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid #3a3846; color: #e4e2ec; }
 
 /* CTA */
 .cta { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 40px; align-items: center; background: linear-gradient(120deg, #121212 0%, #24185e 45%, #4a2fc4 100%); color: #fff; border-radius: 40px; padding: 56px clamp(20px, 5vw, 64px); }
