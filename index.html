@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>練舞人｜讓每一次排練，都更靠近舞台</title>
+<meta name="description" content="練舞人把舞蹈專案、影片筆記、隊形編排與練習進度放在同一個地方。">
+<meta property="og:title" content="練舞人｜讓每一次排練，都更靠近舞台">
+<meta property="og:description" content="從舞蹈專案、影片筆記到隊形編排，把每個作品需要的內容，放回同一個地方。">
+<meta property="og:image" content="icon.png">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: one column of stacked bands; the icon's motion-trail (lime ground, two purple ghosts, black figure) is the single bold device, used on the hero title. */
+:root {
+  --bg: #f6f7f2;
+  --surface: #ffffff;
+  --ink: #121212;
+  --muted: #5d6157;
+  --line: #e2e5da;
+  --lime: #c4ff2e;
+  --lime-ink: #2a6e0a;
+  --violet: #7b5cff;
+  --violet-soft: #b5a5ff;
+  --phone: #141414;
+  --phone-2: #1f1f22;
+  --phone-fg: #f3f3ef;
+  --phone-muted: #9a9c95;
+  --coral: #ff615a;
+  --cyan: #33c7db;
+  --gold: #ffb333;
+  --pink: #f561ad;
+  --font-display: "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+  --font-body: "Geist", "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f100d; --surface: #191a16; --ink: #f3f3ef; --muted: #a4a79c; --line: #2c2e27;
+    --lime-ink: #c4ff2e; --violet: #9a82ff; --violet-soft: #5a4aa8;
+    --phone: #050505; --phone-2: #1b1b1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f100d; --surface: #191a16; --ink: #f3f3ef; --muted: #a4a79c; --line: #2c2e27;
+  --lime-ink: #c4ff2e; --violet: #9a82ff; --violet-soft: #5a4aa8;
+  --phone: #050505; --phone-2: #1b1b1e;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; }
+.appicon { background: url("icon.png") center / cover no-repeat; border-radius: 22.5%; flex: none; }
+
+/* Header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; padding-block: 12px; }
+.top-bar { display: flex; align-items: center; gap: 16px; padding: 8px 8px 8px 12px; background: color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--line); border-radius: 999px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 900; font-size: 17px; text-decoration: none; }
+.brand .appicon { width: 30px; height: 30px; }
+.nav { margin-left: auto; display: flex; align-items: center; gap: 4px; }
+.nav a { text-decoration: none; font-size: 14px; color: var(--muted); padding: 6px 12px; border-radius: 999px; }
+.nav a:hover { color: var(--ink); }
+.nav .btn-sm { background: var(--ink); color: var(--bg); font-weight: 600; }
+.nav .btn-sm:hover { color: var(--bg); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: center; padding-block: 56px 88px; }
+.hero-icon { width: 76px; height: 76px; margin-bottom: 28px; box-shadow: 0 10px 30px color-mix(in srgb, var(--violet) 25%, transparent); }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--violet); margin: 0 0 12px; }
+.title { font-family: var(--font-display); font-weight: 900; font-size: clamp(72px, 13vw, 148px); line-height: 1; letter-spacing: -.02em; margin: 0 0 24px; padding-left: .28em; color: var(--ink);
+  text-shadow: -.12em 0 0 var(--violet), -.24em 0 0 var(--violet-soft);
+  animation: trail 1.1s cubic-bezier(.2,.8,.2,1) .15s both; }
+@keyframes trail { from { text-shadow: 0 0 0 var(--violet), 0 0 0 var(--violet-soft); } }
+.lede { font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 3.6vw, 40px); line-height: 1.3; margin: 0 0 16px; text-wrap: balance; }
+.sub { color: var(--muted); max-width: 30em; margin: 0 0 32px; }
+
+.signup { display: flex; flex-wrap: wrap; gap: 10px; max-width: 460px; }
+.signup label, .signup .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.signup input { flex: 1 1 220px; min-width: 0; height: 54px; padding: 0 18px; font: inherit; font-size: 15px; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; }
+.signup input::placeholder { color: var(--muted); }
+.signup button { height: 54px; padding: 0 26px; font: inherit; font-weight: 600; font-size: 16px; color: #121212; background: var(--lime); border: 0; border-radius: 999px; cursor: pointer; transition: transform .15s, opacity .15s; }
+.signup button:hover { transform: translateY(-1px); }
+.signup button:active { transform: scale(.97); }
+.signup button:disabled { opacity: .6; cursor: default; transform: none; }
+.fine { font-size: 13px; color: var(--muted); margin: 28px 0 0; }
+.fine.ok { color: var(--lime-ink); font-weight: 600; }
+.fine.err { color: var(--coral); font-weight: 600; }
+
+/* Phone mockup */
+.phone { width: min(320px, 100%); margin-inline: auto; background: var(--phone); color: var(--phone-fg); border-radius: 46px; padding: 14px; box-shadow: 0 0 0 2px #2a2a2c, 0 40px 80px -30px color-mix(in srgb, var(--violet) 55%, transparent); }
+.screen { background: linear-gradient(180deg, #221a3a 0%, var(--phone) 42%); border-radius: 34px; padding: 18px 16px 20px; display: grid; gap: 14px; }
+.status { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; color: var(--phone-fg); padding-inline: 8px; }
+.app-head { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 900; font-size: 17px; }
+.app-head .appicon { width: 30px; height: 30px; }
+.chip-btn { margin-left: auto; font-size: 11px; font-weight: 600; color: #121212; background: var(--lime); padding: 5px 10px; border-radius: 999px; }
+.sec-label { font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; }
+.sec-label span { color: var(--phone-muted); font-weight: 400; font-size: 11px; }
+.proj { background: var(--phone-2); border-radius: 18px; padding: 14px; display: grid; gap: 8px; }
+.proj-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.proj h4 { margin: 0; font-size: 16px; font-weight: 700; }
+.proj small { color: var(--phone-muted); font-size: 11px; }
+.meta { display: flex; gap: 12px; font-size: 11px; color: var(--phone-muted); font-family: var(--font-mono); }
+.bar { height: 5px; background: #333; border-radius: 9px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--lime); border-radius: 9px; }
+.tabbar { display: flex; justify-content: space-around; font-size: 10px; color: var(--phone-muted); padding-top: 6px; border-top: 1px solid #2a2a2c; }
+.tabbar b { color: var(--lime); font-weight: 600; }
+
+/* Sections */
+section { padding-block: 88px; }
+.sec-head { display: grid; gap: 12px; margin-bottom: 44px; max-width: 640px; }
+.sec-head h2 { font-family: var(--font-display); font-weight: 900; font-size: clamp(32px, 4.6vw, 52px); line-height: 1.2; margin: 0; text-wrap: balance; }
+.sec-head p { margin: 0; color: var(--muted); }
+
+/* Features bento */
+.bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+.feat { grid-column: span 2; background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 24px; display: grid; grid-template-rows: auto 1fr; gap: 20px; min-width: 0; }
+.feat.wide { grid-column: span 3; }
+.feat .tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; color: var(--violet); margin: 0 0 6px; }
+.feat h3 { font-family: var(--font-display); font-size: 22px; font-weight: 900; margin: 0 0 4px; }
+.feat p { margin: 0; color: var(--muted); font-size: 15px; }
+.vignette { background: var(--phone); color: var(--phone-fg); border-radius: 20px; padding: 16px; display: grid; gap: 10px; align-content: start; font-size: 13px; min-width: 0; }
+
+.note { display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 10px; background: var(--phone-2); border-radius: 12px; padding: 10px 12px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; }
+.tc { font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums; }
+.scrub { position: relative; height: 4px; background: #333; border-radius: 9px; margin: 8px 0 4px; }
+.scrub i { position: absolute; inset: 0 62% 0 0; background: var(--lime); border-radius: 9px; }
+.scrub b { position: absolute; top: -4px; width: 4px; height: 12px; border-radius: 2px; }
+
+.stage { position: relative; aspect-ratio: 16 / 10; max-width: 100%; border-radius: 12px; background:
+  repeating-linear-gradient(90deg, #2a2a2c 0 1px, transparent 1px 25%),
+  repeating-linear-gradient(0deg, #2a2a2c 0 1px, transparent 1px 33.33%), var(--phone-2); }
+.stage-front { position: absolute; top: 6px; left: 0; right: 0; text-align: center; font-size: 10px; color: var(--phone-muted); letter-spacing: .1em; }
+.dancer { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; display: grid; place-items: center; font: 600 12px var(--font-mono); color: #121212; transition: left .6s cubic-bezier(.2,.8,.2,1), top .6s cubic-bezier(.2,.8,.2,1); }
+.seg { display: flex; gap: 6px; flex-wrap: wrap; }
+.seg button { font: inherit; font-size: 11px; color: var(--phone-muted); background: var(--phone-2); border: 0; border-radius: 999px; padding: 4px 10px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--lime); color: #121212; font-weight: 600; }
+
+.prog-row { display: grid; grid-template-columns: 4.5em minmax(0, 1fr) 3em; align-items: center; gap: 10px; }
+.prog-row .tc { text-align: right; color: var(--phone-muted); }
+
+.journal-date { font-family: var(--font-mono); font-size: 11px; color: var(--phone-muted); }
+.journal p { margin: 0; color: var(--phone-fg); font-size: 13px; line-height: 1.6; }
+.next { border-left: 3px solid var(--violet); padding-left: 10px; }
+.next span { display: block; font-size: 11px; color: var(--phone-muted); }
+
+/* Flow */
+.flow { background: var(--ink); color: var(--bg); border-radius: 40px; padding: 64px clamp(20px, 5vw, 64px); }
+.flow .sec-head p { color: color-mix(in srgb, var(--bg) 68%, transparent); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; counter-reset: s; position: relative; }
+.step { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.step-n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font: 600 16px var(--font-mono); color: #121212; }
+.step:nth-child(1) .step-n { background: var(--violet-soft); }
+.step:nth-child(2) .step-n { background: var(--violet); color: #fff; }
+.step:nth-child(3) .step-n { background: var(--lime); }
+.step .when { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; color: color-mix(in srgb, var(--bg) 60%, transparent); margin: 6px 0 0; }
+.step h3 { font-family: var(--font-display); font-weight: 900; font-size: 24px; margin: 0; }
+.step p { margin: 0; color: color-mix(in srgb, var(--bg) 72%, transparent); font-size: 15px; }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.pills span { font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--bg) 25%, transparent); }
+
+/* CTA */
+.cta { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 40px; align-items: center; background: linear-gradient(120deg, #121212 0%, #24185e 45%, #4a2fc4 100%); color: #fff; border-radius: 40px; padding: 56px clamp(20px, 5vw, 64px); }
+.cta .appicon { width: 132px; height: 132px; box-shadow: 0 0 0 3px #121212; }
+.cta h2 { font-family: var(--font-display); font-weight: 900; font-size: clamp(30px, 4.4vw, 48px); line-height: 1.25; margin: 0 0 12px; text-wrap: balance; }
+.cta > div > p { margin: 0 0 24px; color: #e6e0ff; }
+.cta .fine { color: #d6ccff; }
+.cta .fine.ok { color: var(--lime); }
+.cta .fine.err { color: #ffb4b0; }
+.cta .signup input { background: #fff; color: #121212; border-color: transparent; }
+.cta .signup input::placeholder { color: #6a6f60; }
+
+footer { padding-block: 40px 56px; }
+.foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; border-top: 1px solid var(--line); padding-top: 28px; font-size: 14px; color: var(--muted); }
+.foot .brand { color: var(--ink); }
+.foot nav { display: flex; gap: 20px; margin-left: auto; }
+.foot nav a { text-decoration: none; }
+.foot nav a:hover { color: var(--ink); }
+
+@media (max-width: 880px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 32px 56px; }
+  .bento { grid-template-columns: minmax(0, 1fr); }
+  .feat, .feat.wide { grid-column: auto; }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .cta { grid-template-columns: minmax(0, 1fr); }
+  .cta .appicon { width: 88px; height: 88px; }
+  section { padding-block: 56px; }
+}
+@media (max-width: 520px) {
+  .nav a:not(.btn-sm) { display: none; }
+  .flow, .cta { border-radius: 28px; }
+  .foot nav { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .title { animation: none; }
+  .dancer { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="top-bar">
+      <a class="brand" href="#top"><span class="appicon" role="img" aria-label="練舞人 App 圖示"></span>練舞人</a>
+      <nav class="nav" aria-label="主要">
+        <a href="#features">功能</a>
+        <a href="#flow">排練流程</a>
+        <a class="btn-sm" href="#join">加入測試</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <div class="appicon hero-icon" role="img" aria-label="練舞人 App 圖示"></div>
+        <p class="eyebrow">Dance Rehearsal Workspace</p>
+        <h1 class="title">練舞人</h1>
+        <p class="lede">讓每一次排練，<br>都更靠近舞台。</p>
+        <p class="sub">從舞蹈專案、影片筆記到隊形編排，把每個作品需要的內容，放回同一個地方。</p>
+        <form class="signup" data-signup novalidate>
+          <label for="email-hero">Email</label>
+          <input id="email-hero" name="email" type="email" required placeholder="你的 Email" autocomplete="email">
+          <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit">加入測試名單</button>
+        </form>
+        <p class="fine" aria-live="polite">只寄送測試通知，不打擾。</p>
+      </div>
+
+      <div class="phone" aria-hidden="true">
+        <div class="screen">
+          <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+          <div class="app-head"><span class="appicon"></span>練舞人<span class="chip-btn">＋ 新增專案</span></div>
+          <div class="sec-label">最近的專案 <span>3 個進行中</span></div>
+          <div class="proj">
+            <div class="proj-top"><h4>Midnight Groove</h4><small>主歌 B</small></div>
+            <div class="meta"><span>02:48</span><span>6 人</span><span>12 則筆記</span></div>
+            <div class="bar"><i style="width:72%"></i></div>
+          </div>
+          <div class="proj">
+            <div class="proj-top"><h4>Summer Cover</h4><small>副歌</small></div>
+            <div class="meta"><span>03:12</span><span>4 人</span><span>5 則筆記</span></div>
+            <div class="bar"><i style="width:38%"></i></div>
+          </div>
+          <div class="proj">
+            <div class="proj-top"><h4>畢業公演 Opening</h4><small>前奏</small></div>
+            <div class="meta"><span>01:56</span><span>9 人</span><span>3 則筆記</span></div>
+            <div class="bar"><i style="width:15%"></i></div>
+          </div>
+          <div class="tabbar"><b>專案</b><span>練習</span><span>隊形</span><span>日誌</span></div>
+        </div>
+      </div>
+    </div>
+
+    <section id="features">
+      <div class="sec-head">
+        <p class="eyebrow">功能</p>
+        <h2>五個功能，讓排練更清楚。</h2>
+      </div>
+
+      <div class="bento">
+        <article class="feat wide">
+          <div>
+            <p class="tag">專案管理</p>
+            <h3>專案集中管理</h3>
+            <p>影片、隊形、筆記與進度都在一起。</p>
+          </div>
+          <div class="vignette" aria-hidden="true">
+            <div class="proj">
+              <div class="proj-top"><h4>Midnight Groove</h4><small>6 人</small></div>
+              <div class="meta"><span>影片 3</span><span>隊形 8</span><span>筆記 12</span></div>
+              <div class="bar"><i style="width:72%"></i></div>
+            </div>
+            <div class="proj">
+              <div class="proj-top"><h4>Summer Cover</h4><small>4 人</small></div>
+              <div class="meta"><span>影片 1</span><span>隊形 4</span><span>筆記 5</span></div>
+              <div class="bar"><i style="width:38%"></i></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="feat wide">
+          <div>
+            <p class="tag">練習筆記</p>
+            <h3>直接標記時間點</h3>
+            <p>動作問題與修正，一看就知道。</p>
+          </div>
+          <div class="vignette" aria-hidden="true">
+            <div class="scrub"><i></i><b style="left:7%;background:var(--lime)"></b><b style="left:18%;background:var(--violet)"></b><b style="left:33%;background:var(--coral)"></b><b style="left:51%;background:var(--gold)"></b></div>
+            <div class="note"><span class="dot" style="background:var(--lime)"></span><span class="tc">00:08.5</span><span>第二個八拍，手臂再收快一點</span></div>
+            <div class="note"><span class="dot" style="background:var(--violet)"></span><span class="tc">00:23.4</span><span>胸推放大，手肘打開</span></div>
+            <div class="note"><span class="dot" style="background:var(--coral)"></span><span class="tc">00:42.1</span><span>轉圈留頭，重心放低</span></div>
+          </div>
+        </article>
+
+        <article class="feat">
+          <div>
+            <p class="tag">隊形編排</p>
+            <h3>隊形清楚到位</h3>
+            <p>拖曳位置，快速切換每個段落。</p>
+          </div>
+          <div class="vignette">
+            <div class="seg" role="group" aria-label="切換段落">
+              <button type="button" aria-pressed="true" data-seg="0">前奏</button>
+              <button type="button" aria-pressed="false" data-seg="1">主歌</button>
+              <button type="button" aria-pressed="false" data-seg="2">副歌</button>
+            </div>
+            <div class="stage" aria-hidden="true">
+              <span class="stage-front">舞台前方</span>
+              <span class="dancer" style="background:var(--lime)">1</span>
+              <span class="dancer" style="background:var(--violet-soft)">2</span>
+              <span class="dancer" style="background:var(--coral)">3</span>
+              <span class="dancer" style="background:var(--cyan)">4</span>
+              <span class="dancer" style="background:var(--gold)">5</span>
+              <span class="dancer" style="background:var(--pink)">6</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="feat">
+          <div>
+            <p class="tag">練習進度</p>
+            <h3>掌握練習進度</h3>
+            <p>知道完成了什麼，接下來要練什麼。</p>
+          </div>
+          <div class="vignette" aria-hidden="true">
+            <div class="prog-row"><span>前奏</span><div class="bar"><i style="width:100%"></i></div><span class="tc">100%</span></div>
+            <div class="prog-row"><span>主歌 A</span><div class="bar"><i style="width:85%"></i></div><span class="tc">85%</span></div>
+            <div class="prog-row"><span>主歌 B</span><div class="bar"><i style="width:60%"></i></div><span class="tc">60%</span></div>
+            <div class="prog-row"><span>副歌</span><div class="bar"><i style="width:30%"></i></div><span class="tc">30%</span></div>
+            <div class="prog-row"><span>Ending</span><div class="bar"><i style="width:0%"></i></div><span class="tc">0%</span></div>
+          </div>
+        </article>
+
+        <article class="feat">
+          <div>
+            <p class="tag">練習日誌</p>
+            <h3>留下每次累積</h3>
+            <p>記錄狀態與下一次練習重點。</p>
+          </div>
+          <div class="vignette journal" aria-hidden="true">
+            <span class="journal-date">11/05 週三 · 練習 90 分鐘</span>
+            <p>副歌第一段終於對齊拍子，地板動作還是太慢，膝蓋要記得護好。</p>
+            <div class="next"><span>下次重點</span>副歌轉位、Ending 定格</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="flow">
+        <div class="sec-head">
+          <p class="eyebrow">一次完整的排練</p>
+          <h2>從準備作品，到下一次繼續。</h2>
+          <p>練舞人跟著真正的排練節奏前進，讓每一個階段都有清楚的下一步。</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <span class="step-n">1</span>
+            <p class="when">排練前</p>
+            <h3>把作品準備好</h3>
+            <p>建立舞蹈專案、匯入練習影片，再把音樂拆成清楚的段落。開始排練前，所有人都知道作品的結構。</p>
+            <div class="pills"><span>建立專案</span><span>匯入影片</span><span>拆分段落</span></div>
+          </div>
+          <div class="step">
+            <span class="step-n">2</span>
+            <p class="when">排練中</p>
+            <h3>專注現在的問題</h3>
+            <p>直接在影片時間點留下筆記，切換段落與隊形，同時更新練習進度。需要處理的內容就在眼前。</p>
+            <div class="pills"><span>時間點筆記</span><span>隊形切換</span><span>進度更新</span></div>
+          </div>
+          <div class="step">
+            <span class="step-n">3</span>
+            <p class="when">排練後</p>
+            <h3>把成果留給下一次</h3>
+            <p>寫下這次的練習狀態與心得，整理尚未完成的重點。下一次打開專案，就能直接接著前進。</p>
+            <div class="pills"><span>練習日誌</span><span>整理重點</span><span>下次目標</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="join">
+      <div class="cta">
+        <div class="appicon" role="img" aria-label="練舞人 App 圖示"></div>
+        <div>
+          <h2>把想跳的，練成站上舞台的樣子。</h2>
+          <p>留下 Email，App 開放測試時我們會第一時間通知你。</p>
+          <form class="signup" data-signup novalidate>
+          <label for="email-cta">Email</label>
+          <input id="email-cta" name="email" type="email" required placeholder="你的 Email" autocomplete="email">
+          <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit">加入測試名單</button>
+        </form>
+          <p class="fine" aria-live="polite">只寄送測試與上線通知，隨時可以退出。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot">
+      <a class="brand" href="#top"><span class="appicon" role="img" aria-label="練舞人 App 圖示"></span>練舞人</a>
+      <span>© 2026 練舞人</span>
+      <nav aria-label="頁尾">
+        <a href="https://lianwuren-dance.billy3064.chatgpt.site/support">Support</a>
+        <a href="https://lianwuren-dance.billy3064.chatgpt.site/privacy">Privacy Policy</a>
+        <a href="https://lianwuren-dance.billy3064.chatgpt.site/terms">Terms</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+<script>
+const WAITLIST_URL = "https://script.google.com/macros/s/AKfycbwPRUBZTVzkfHOoswhqHyTFgyuLAheE3DCgAA_qi0XqIdurIYKvXHAu-5eiQArM9UxFWg/exec";
+
+document.querySelectorAll("[data-signup]").forEach(form => {
+  const msg = form.nextElementSibling;
+  const original = msg.textContent;
+  const button = form.querySelector("button");
+  const show = (text, state) => {
+    msg.textContent = text;
+    msg.classList.remove("ok", "err");
+    if (state) msg.classList.add(state);
+  };
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const email = form.email.value.trim();
+    if (!form.email.checkValidity() || !email) {
+      show("請輸入正確的 Email。", "err");
+      form.email.focus();
+      return;
+    }
+    if (form.website.value) return;
+    button.disabled = true;
+    show("送出中…");
+    try {
+      const res = await fetch(WAITLIST_URL, { method: "POST", body: JSON.stringify({ email }) });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error);
+      form.reset();
+      show("已加入測試名單，開放測試時會寄信通知你。", "ok");
+    } catch {
+      show("目前無法送出，請稍後再試一次。", "err");
+    } finally {
+      button.disabled = false;
+    }
+  });
+  form.email.addEventListener("input", () => {
+    if (msg.classList.contains("err")) show(original);
+  });
+});
+
+const formations = [
+  [[20,72],[36,72],[52,72],[68,72],[84,72],[52,40]],
+  [[30,35],[70,35],[20,60],[50,60],[80,60],[50,85]],
+  [[50,30],[35,50],[65,50],[20,72],[50,72],[80,72]]
+];
+const dancers = document.querySelectorAll(".dancer");
+const segButtons = document.querySelectorAll("[data-seg]");
+function showFormation(i) {
+  formations[i].forEach(([x, y], d) => {
+    dancers[d].style.left = x + "%";
+    dancers[d].style.top = y + "%";
+  });
+  segButtons.forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.seg === i)));
+}
+segButtons.forEach(b => b.addEventListener("click", () => showFormation(+b.dataset.seg)));
+showFormation(0);
+</script>
+</body>
+</html>
