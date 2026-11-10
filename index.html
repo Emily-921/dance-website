@@ -99,20 +99,6 @@ a { color: inherit; }
 
 /* Phone mockup */
 .phone { width: min(320px, 100%); margin-inline: auto; background: var(--phone); color: var(--phone-fg); border-radius: 46px; padding: 14px; box-shadow: 0 0 0 2px #2a2a2c, 0 40px 80px -30px color-mix(in srgb, var(--violet) 55%, transparent); }
-.screen { background: linear-gradient(180deg, #221a3a 0%, var(--phone) 42%); border-radius: 34px; padding: 18px 16px 20px; display: grid; gap: 14px; }
-.status { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; color: var(--phone-fg); padding-inline: 8px; }
-.app-head { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 900; font-size: 17px; }
-.app-head .appicon { width: 30px; height: 30px; }
-.chip-btn { margin-left: auto; font-size: 11px; font-weight: 600; color: #121212; background: var(--lime); padding: 5px 10px; border-radius: 999px; }
-.sec-label { font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; }
-.sec-label span { color: var(--phone-muted); font-weight: 400; font-size: 11px; }
-.proj { background: var(--phone-2); border-radius: 18px; padding: 14px; display: grid; gap: 8px; }
-.proj-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.proj h4 { margin: 0; font-size: 16px; font-weight: 700; }
-.proj small { color: var(--phone-muted); font-size: 11px; }
-.meta { display: flex; gap: 12px; font-size: 11px; color: var(--phone-muted); font-family: var(--font-mono); }
-.bar { height: 5px; background: #333; border-radius: 9px; overflow: hidden; }
-.bar i { display: block; height: 100%; background: var(--lime); border-radius: 9px; }
 
 /* Sections */
 section { padding-block: 88px; }
@@ -129,72 +115,26 @@ section { padding-block: 88px; }
 .feat p { margin: 0; color: var(--muted); font-size: 15px; }
 .vignette { background: var(--phone); color: var(--phone-fg); border-radius: 20px; padding: 16px; display: grid; gap: 10px; align-content: start; font-size: 13px; min-width: 0; }
 
-.note { display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 10px; background: var(--phone-2); border-radius: 12px; padding: 10px 12px; }
-.dot { width: 9px; height: 9px; border-radius: 50%; }
-.tc { font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums; }
-.scrub { position: relative; height: 4px; background: #333; border-radius: 9px; margin: 8px 0 4px; }
-.scrub i { position: absolute; inset: 0 62% 0 0; background: var(--lime); border-radius: 9px; }
-.scrub b { position: absolute; top: -4px; width: 4px; height: 12px; border-radius: 2px; }
 
 .stage { position: relative; aspect-ratio: 16 / 10; max-width: 100%; border-radius: 12px; background:
   repeating-linear-gradient(90deg, #2a2a2c 0 1px, transparent 1px 25%),
   repeating-linear-gradient(0deg, #2a2a2c 0 1px, transparent 1px 33.33%), var(--phone-2); }
-.stage-front { position: absolute; top: 6px; left: 0; right: 0; text-align: center; font-size: 10px; color: var(--phone-muted); letter-spacing: .1em; }
-.dancer { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; display: grid; place-items: center; font: 600 12px var(--font-mono); color: #121212; transition: left .6s cubic-bezier(.2,.8,.2,1), top .6s cubic-bezier(.2,.8,.2,1); }
-.seg { display: flex; gap: 6px; flex-wrap: wrap; }
-.seg button { font: inherit; font-size: 11px; color: var(--phone-muted); background: var(--phone-2); border: 0; border-radius: 999px; padding: 4px 10px; cursor: pointer; }
-.seg button[aria-pressed="true"] { background: var(--lime); color: #121212; font-weight: 600; }
 
-.prog-row { display: grid; grid-template-columns: 4.5em minmax(0, 1fr) 3em; align-items: center; gap: 10px; }
-.prog-row .tc { text-align: right; color: var(--phone-muted); }
-.prog-row.total { grid-template-columns: auto minmax(0, 1fr) 3em; margin-bottom: 4px; }
 
-.journal-date { font-family: var(--font-mono); font-size: 11px; color: var(--phone-muted); }
-.journal p { margin: 0; color: var(--phone-fg); font-size: 13px; line-height: 1.6; }
-.next { border-left: 3px solid var(--violet); padding-left: 10px; }
-.next span { display: block; font-size: 11px; color: var(--phone-muted); }
 
-.search { font-size: 12px; color: var(--phone-muted); background: var(--phone-2); border-radius: 999px; padding: 7px 14px; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chips span { font: 500 11px var(--font-mono); color: var(--phone-muted); background: var(--phone-2); border-radius: 999px; padding: 4px 9px; }
-.chips .on { background: var(--lime); color: #121212; }
-.chips .tool { margin-left: auto; color: var(--phone-fg); border: 1px solid #3a3a3e; background: transparent; }
-.loop { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 12px; }
-.loop .tc { margin-left: auto; color: var(--phone-muted); }
-.loop-tag { font-size: 11px; font-weight: 600; color: #121212; background: var(--violet-soft); border-radius: 999px; padding: 2px 8px; }
-.scrub .loop-range { position: absolute; top: -3px; bottom: -3px; left: 38%; width: 22%; border-radius: 4px; background: color-mix(in srgb, var(--violet-soft) 35%, transparent); border: 1px solid var(--violet-soft); }
-.warn { margin: 0; font-size: 12px; font-weight: 600; color: var(--gold); }
-.goal { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; background: var(--phone-2); border-radius: 12px; padding: 9px 12px; }
-.goal .check { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--phone-muted); display: grid; place-items: center; font-size: 10px; }
-.goal.done .check { background: var(--lime); border-color: var(--lime); color: #121212; }
-.goal.done > span:nth-child(2) { color: var(--phone-muted); text-decoration: line-through; }
-.goal .tc { color: var(--phone-muted); font-size: 11px; }
-.goal.late .tc { color: var(--coral); }
-.mood { color: var(--lime); font-weight: 600; }
 .member { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; }
 .member small { color: var(--phone-muted); font-size: 11px; }
 .avatar { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font: 600 12px var(--font-body); color: #121212; }
 .invite { margin-top: 4px; text-align: center; font-size: 12px; font-weight: 600; color: var(--lime); border: 1px dashed #3a3a3e; border-radius: 12px; padding: 8px; }
 .specs { margin: 14px 0 0; font-size: 13px; color: #d6ccff; }
 
-.chips .tool-next { margin-left: 0; }
-.stage-foot { display: flex; align-items: center; gap: 10px; min-height: 22px; }
-.share { margin-left: auto; font-size: 11px; font-weight: 600; color: var(--phone-fg); border: 1px solid #3a3a3e; border-radius: 999px; padding: 3px 10px; }
-.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.stats div { background: var(--phone-2); border-radius: 14px; padding: 12px 14px; display: grid; gap: 2px; }
-.stats span { font-size: 11px; color: var(--phone-muted); }
-.stats b { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.days { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-.days span { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; color: var(--phone-muted); background: var(--phone-2); }
-.days .on { background: var(--lime); color: #121212; font-weight: 600; }
-.days .tc { margin-left: auto; font-size: 14px; }
-.notif { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 10px; background: var(--phone-2); border-radius: 14px; padding: 10px 12px; }
-.notif .appicon { width: 28px; height: 28px; }
-.notif b { display: block; font-size: 13px; }
-.notif div span { font-size: 12px; color: var(--phone-muted); }
 
 .soon { display: inline-block; margin-left: 6px; font: 600 11px var(--font-body); letter-spacing: 0; color: #121212; background: var(--lime); border-radius: 999px; padding: 1px 8px; vertical-align: 1px; }
 .feat-soon .vignette { opacity: .55; }
+
+.screen-img { display: block; width: 100%; height: auto; border-radius: 34px; }
+.shot { width: min(280px, 100%); margin-inline: auto; aspect-ratio: 9 / 15; overflow: hidden; border-radius: 26px; background: #000; box-shadow: 0 0 0 1px var(--line), 0 24px 48px -28px color-mix(in srgb, var(--violet) 60%, transparent); }
+.shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
 /* Flow */
 .flow { background: #17161d; color: #f3f3ef; border: 1px solid #2c2a36; border-radius: 40px; padding: 64px clamp(20px, 5vw, 64px); }
@@ -243,7 +183,6 @@ footer { padding-block: 40px 56px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .title { animation: none; }
-  .dancer { transition: none; }
 }
 </style>
 </head>
@@ -278,28 +217,8 @@ footer { padding-block: 40px 56px; }
         <p class="fine" aria-live="polite">只寄送測試通知，不打擾。</p>
       </div>
 
-      <div class="phone" aria-hidden="true">
-        <div class="screen">
-          <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-          <div class="app-head"><span class="appicon"></span>練舞人<span class="chip-btn">＋ 新增專案</span></div>
-          <div class="search">搜尋專案</div>
-          <div class="sec-label">專案 <span>3 個</span></div>
-          <div class="proj">
-            <div class="proj-top"><h4>Midnight Groove</h4><small>主歌 B</small></div>
-            <div class="meta"><span>02:48</span><span>6 人</span><span>12 則筆記</span></div>
-            <div class="bar"><i style="width:72%"></i></div>
-          </div>
-          <div class="proj">
-            <div class="proj-top"><h4>Summer Cover</h4><small>副歌</small></div>
-            <div class="meta"><span>03:12</span><span>4 人</span><span>5 則筆記</span></div>
-            <div class="bar"><i style="width:38%"></i></div>
-          </div>
-          <div class="proj">
-            <div class="proj-top"><h4>畢業公演 Opening</h4><small>前奏</small></div>
-            <div class="meta"><span>01:56</span><span>9 人</span><span>3 則筆記</span></div>
-            <div class="bar"><i style="width:15%"></i></div>
-          </div>
-        </div>
+      <div class="phone">
+        <img class="screen-img" src="images/01-projects.jpg" width="603" height="1311" alt="練舞人的專案列表，顯示 Midnight Groove、Summer Cover 和畢業公演 Opening 三個專案與完成度">
       </div>
     </div>
 
@@ -316,14 +235,7 @@ footer { padding-block: 40px 56px; }
             <h3>跟著影片或 Apple Music 練</h3>
             <p>從照片匯入練習影片，或直接選 Apple Music 的歌。播放前倒數幾秒讓你站好位置，也能調速度、開鏡像、循環難的片段，在時間點留下筆記。</p>
           </div>
-          <div class="vignette" aria-hidden="true">
-            <div class="chips"><span>0.5×</span><span>0.75×</span><span class="on">0.8×</span><span>0.9×</span><span>1×</span><span>1.5×</span><span class="tool">倒數 5 秒</span><span class="tool tool-next">鏡像</span></div>
-            <div class="loop"><span class="loop-tag">循環中</span><span>片段 2 · 副歌</span><span class="tc">0:42 – 1:05</span></div>
-            <div class="scrub"><i></i><span class="loop-range"></span><b style="left:7%;background:var(--lime)"></b><b style="left:18%;background:var(--violet)"></b><b style="left:33%;background:var(--coral)"></b></div>
-            <div class="note"><span class="dot" style="background:var(--lime)"></span><span class="tc">0:08</span><span>第二個八拍，手臂再收快一點</span></div>
-            <div class="note"><span class="dot" style="background:var(--violet)"></span><span class="tc">0:23</span><span>胸推放大，手肘打開</span></div>
-            <div class="note"><span class="dot" style="background:var(--coral)"></span><span class="tc">0:42</span><span>轉圈留頭，重心放低</span></div>
-          </div>
+                    <div class="shot"><img src="images/02-practice-import.jpg" width="603" height="1311" loading="lazy" alt="練習頁：匯入練習影片或從 Apple Music 選歌，下方是播放控制和時間筆記"></div>
         </article>
 
         <article class="feat wide">
@@ -332,23 +244,7 @@ footer { padding-block: 40px 56px; }
             <h3>隊形跟著音樂換</h3>
             <p>拖曳舞者排位置，把每個隊形設在歌曲的時間點，播放時自動切換。舞者站太近會提醒你，排好的隊形也能存成圖片，傳給還沒裝 App 的團員。</p>
           </div>
-          <div class="vignette">
-            <div class="seg" role="group" aria-label="切換隊形">
-              <button type="button" aria-pressed="true" data-seg="0">0:00 前奏</button>
-              <button type="button" aria-pressed="false" data-seg="1">0:32 主歌</button>
-              <button type="button" aria-pressed="false" data-seg="2">1:05 副歌</button>
-            </div>
-            <div class="stage" aria-hidden="true">
-              <span class="stage-front">前方</span>
-              <span class="dancer" style="background:var(--lime)">1</span>
-              <span class="dancer" style="background:var(--violet-soft)">2</span>
-              <span class="dancer" style="background:var(--coral)">3</span>
-              <span class="dancer" style="background:var(--cyan)">4</span>
-              <span class="dancer" style="background:var(--gold)">5</span>
-              <span class="dancer" style="background:var(--pink)">6</span>
-            </div>
-            <div class="stage-foot"><p class="warn" data-warn hidden></p><span class="share">分享隊形圖</span></div>
-          </div>
+                    <div class="shot"><img src="images/03-formation.jpg" width="603" height="1311" loading="lazy" alt="隊形頁：主歌 V 字隊形，六位舞者在舞台上的位置"></div>
         </article>
 
         <article class="feat">
@@ -357,12 +253,7 @@ footer { padding-block: 40px 56px; }
             <h3>排好每個目標的日期</h3>
             <p>用清單或月曆看進度，逾期的目標一眼就看到。</p>
           </div>
-          <div class="vignette" aria-hidden="true">
-            <div class="prog-row total"><span>整體完成度</span><div class="bar"><i style="width:60%"></i></div><span class="tc">60%</span></div>
-            <div class="goal done"><span class="check">✓</span><span>主歌 A 走位</span><span class="tc">11/1–11/5</span></div>
-            <div class="goal"><span class="check"></span><span>副歌轉位</span><span class="tc">11/6–11/12</span></div>
-            <div class="goal late"><span class="check"></span><span>Ending 定格</span><span class="tc">已逾期</span></div>
-          </div>
+                    <div class="shot"><img src="images/04-goals.jpg" width="603" height="1311" loading="lazy" alt="目標頁：整體完成度 40%，列出每個目標的日期與逾期提醒"></div>
         </article>
 
         <article class="feat">
@@ -371,11 +262,7 @@ footer { padding-block: 40px 56px; }
             <h3>留下每次練習</h3>
             <p>記下練了多久、狀態如何，再連到當天的時間筆記。</p>
           </div>
-          <div class="vignette journal" aria-hidden="true">
-            <span class="journal-date">11/7 · 1 小時 30 分 · <b class="mood">順利</b></span>
-            <p>副歌第一段終於對齊拍子，地板動作還是太慢。</p>
-            <div class="next"><span>關聯筆記</span>0:42 · 轉圈留頭，重心放低</div>
-          </div>
+                    <div class="shot"><img src="images/05-journal.jpg" width="603" height="1311" loading="lazy" alt="日誌頁：練習次數、累積時間和每次練習的心得"></div>
         </article>
 
         <article class="feat feat-soon">
@@ -398,14 +285,7 @@ footer { padding-block: 40px 56px; }
             <h3>看見自己練了多少</h3>
             <p>累積時間、練習次數、連續練習天數和完成的目標，都整理在帳號頁。</p>
           </div>
-          <div class="vignette" aria-hidden="true">
-            <div class="stats">
-              <div><span>累積時間</span><b>18 小時 40 分</b></div>
-              <div><span>練習次數</span><b>23</b></div>
-              <div><span>連續練習</span><b>6 天</b></div>
-              <div><span>完成目標</span><b>7／10 項</b></div>
-            </div>
-          </div>
+                    <div class="shot"><img src="images/06-account.jpg" width="603" height="1311" loading="lazy" alt="帳號頁：累積時間、練習次數、連續練習天數和完成目標"></div>
         </article>
 
         <article class="feat wide">
@@ -414,11 +294,7 @@ footer { padding-block: 40px 56px; }
             <h3>到了練習日會提醒你</h3>
             <p>選好星期幾和時間，App 會通知你練習。目標到期當天也會提醒。</p>
           </div>
-          <div class="vignette" aria-hidden="true">
-            <div class="days"><span>日</span><span class="on">一</span><span>二</span><span class="on">三</span><span>四</span><span class="on">五</span><span>六</span><b class="tc">19:00</b></div>
-            <div class="notif"><span class="appicon"></span><div><b>該練舞囉</b><span>今天是練習日，來練一下吧！</span></div></div>
-            <div class="notif"><span class="appicon"></span><div><b>目標今天到期</b><span>副歌轉位</span></div></div>
-          </div>
+                    <div class="shot"><img src="images/07-reminders.jpg" width="603" height="1311" loading="lazy" alt="練習提醒設定：提醒時間 19:00，每週一、三、五"></div>
         </article>
       </div>
     </section>
@@ -527,31 +403,6 @@ document.querySelectorAll("[data-signup]").forEach(form => {
     if (msg.classList.contains("err")) show(original);
   });
 });
-
-const formations = [
-  [[20,72],[36,72],[52,72],[68,72],[84,72],[52,40]],
-  [[46,35],[52,38],[20,60],[50,60],[80,60],[50,85]],
-  [[50,30],[35,50],[65,50],[20,72],[50,72],[80,72]]
-];
-const dancers = document.querySelectorAll(".dancer");
-const segButtons = document.querySelectorAll("[data-seg]");
-const warn = document.querySelector("[data-warn]");
-function showFormation(i) {
-  formations[i].forEach(([x, y], d) => {
-    dancers[d].style.left = x + "%";
-    dancers[d].style.top = y + "%";
-  });
-  segButtons.forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.seg === i)));
-  const close = new Set();
-  formations[i].forEach(([x1, y1], a) => formations[i].forEach(([x2, y2], b) => {
-    if (a < b && Math.hypot(x1 - x2, (y1 - y2) * 0.625) < 9) { close.add(a); close.add(b); }
-  }));
-  warn.hidden = close.size === 0;
-  warn.textContent = `有 ${close.size} 位舞者太靠近`;
-  dancers.forEach((d, n) => d.style.outline = close.has(n) ? "2px solid var(--gold)" : "");
-}
-segButtons.forEach(b => b.addEventListener("click", () => showFormation(+b.dataset.seg)));
-showFormation(0);
 </script>
 </body>
 </html>
