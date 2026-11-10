@@ -193,6 +193,9 @@ section { padding-block: 88px; }
 .notif b { display: block; font-size: 13px; }
 .notif div span { font-size: 12px; color: var(--phone-muted); }
 
+.soon { display: inline-block; margin-left: 6px; font: 600 11px var(--font-body); letter-spacing: 0; color: #121212; background: var(--lime); border-radius: 999px; padding: 1px 8px; vertical-align: 1px; }
+.feat-soon .vignette { opacity: .55; }
+
 /* Flow */
 .flow { background: #17161d; color: #f3f3ef; border: 1px solid #2c2a36; border-radius: 40px; padding: 64px clamp(20px, 5vw, 64px); }
 .flow .sec-head p { color: #b9b7c4; }
@@ -265,7 +268,7 @@ footer { padding-block: 40px 56px; }
         <p class="eyebrow">Dance Rehearsal Workspace</p>
         <h1 class="title">練舞人</h1>
         <p class="lede">讓每一次排練，<br>都更靠近舞台。</p>
-        <p class="sub">每個舞蹈作品一個專案。練習影片、時間筆記、隊形、目標和日誌都放在裡面，也能邀請團員一起編輯。</p>
+        <p class="sub">每個舞蹈作品一個專案。練習影片、時間筆記、隊形、目標和日誌都放在裡面，排好的隊形也能直接傳給團員。</p>
         <form class="signup" data-signup novalidate>
           <label for="email-hero">Email</label>
           <input id="email-hero" name="email" type="email" required placeholder="你的 Email" autocomplete="email">
@@ -375,11 +378,11 @@ footer { padding-block: 40px 56px; }
           </div>
         </article>
 
-        <article class="feat">
+        <article class="feat feat-soon">
           <div>
-            <p class="tag">共同編輯</p>
+            <p class="tag">共同編輯 <span class="soon">即將推出</span></p>
             <h3>邀請團員一起編輯</h3>
-            <p>傳送邀請連結，大家在同一個專案裡改隊形、寫筆記。</p>
+            <p>之後可以傳送邀請連結，讓大家在同一個專案裡改隊形、寫筆記。</p>
           </div>
           <div class="vignette" aria-hidden="true">
             <div class="member"><span class="avatar" style="background:var(--lime)">E</span><span>Emily</span><small>擁有者</small></div>
@@ -432,8 +435,8 @@ footer { padding-block: 40px 56px; }
             <span class="step-n">1</span>
             <p class="when">排練前</p>
             <h3>把作品準備好</h3>
-            <p>建立舞蹈專案，匯入練習影片或選一首 Apple Music 的歌，再邀請團員加入。開始排練前，所有人都看得到同一份作品。</p>
-            <div class="pills"><span>建立專案</span><span>匯入影片或音樂</span><span>邀請團員</span><span>設定練習提醒</span></div>
+            <p>建立舞蹈專案，匯入練習影片或選一首 Apple Music 的歌，再把音樂拆成要練的片段。開始排練前，作品的結構就很清楚。</p>
+            <div class="pills"><span>建立專案</span><span>匯入影片或音樂</span><span>設定循環片段</span><span>設定練習提醒</span></div>
           </div>
           <div class="step">
             <span class="step-n">2</span>
