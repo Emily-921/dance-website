@@ -177,6 +177,22 @@ section { padding-block: 88px; }
 .invite { margin-top: 4px; text-align: center; font-size: 12px; font-weight: 600; color: var(--lime); border: 1px dashed #3a3a3e; border-radius: 12px; padding: 8px; }
 .specs { margin: 14px 0 0; font-size: 13px; color: #d6ccff; }
 
+.chips .tool-next { margin-left: 0; }
+.stage-foot { display: flex; align-items: center; gap: 10px; min-height: 22px; }
+.share { margin-left: auto; font-size: 11px; font-weight: 600; color: var(--phone-fg); border: 1px solid #3a3a3e; border-radius: 999px; padding: 3px 10px; }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.stats div { background: var(--phone-2); border-radius: 14px; padding: 12px 14px; display: grid; gap: 2px; }
+.stats span { font-size: 11px; color: var(--phone-muted); }
+.stats b { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.days { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.days span { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; color: var(--phone-muted); background: var(--phone-2); }
+.days .on { background: var(--lime); color: #121212; font-weight: 600; }
+.days .tc { margin-left: auto; font-size: 14px; }
+.notif { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 10px; background: var(--phone-2); border-radius: 14px; padding: 10px 12px; }
+.notif .appicon { width: 28px; height: 28px; }
+.notif b { display: block; font-size: 13px; }
+.notif div span { font-size: 12px; color: var(--phone-muted); }
+
 /* Flow */
 .flow { background: #17161d; color: #f3f3ef; border: 1px solid #2c2a36; border-radius: 40px; padding: 64px clamp(20px, 5vw, 64px); }
 .flow .sec-head p { color: #b9b7c4; }
@@ -295,10 +311,10 @@ footer { padding-block: 40px 56px; }
           <div>
             <p class="tag">練習</p>
             <h3>跟著影片或 Apple Music 練</h3>
-            <p>從照片匯入練習影片，或直接選 Apple Music 的歌。可以調速度、開鏡像、循環難的片段，在時間點留下筆記。</p>
+            <p>從照片匯入練習影片，或直接選 Apple Music 的歌。播放前倒數幾秒讓你站好位置，也能調速度、開鏡像、循環難的片段，在時間點留下筆記。</p>
           </div>
           <div class="vignette" aria-hidden="true">
-            <div class="chips"><span>0.5×</span><span>0.75×</span><span class="on">0.8×</span><span>0.9×</span><span>1×</span><span>1.5×</span><span class="tool">鏡像</span></div>
+            <div class="chips"><span>0.5×</span><span>0.75×</span><span class="on">0.8×</span><span>0.9×</span><span>1×</span><span>1.5×</span><span class="tool">倒數 5 秒</span><span class="tool tool-next">鏡像</span></div>
             <div class="loop"><span class="loop-tag">循環中</span><span>片段 2 · 副歌</span><span class="tc">0:42 – 1:05</span></div>
             <div class="scrub"><i></i><span class="loop-range"></span><b style="left:7%;background:var(--lime)"></b><b style="left:18%;background:var(--violet)"></b><b style="left:33%;background:var(--coral)"></b></div>
             <div class="note"><span class="dot" style="background:var(--lime)"></span><span class="tc">0:08</span><span>第二個八拍，手臂再收快一點</span></div>
@@ -311,7 +327,7 @@ footer { padding-block: 40px 56px; }
           <div>
             <p class="tag">隊形</p>
             <h3>隊形跟著音樂換</h3>
-            <p>拖曳舞者排位置，把每個隊形設在歌曲的時間點，播放時自動切換。舞者站太近會提醒你。</p>
+            <p>拖曳舞者排位置，把每個隊形設在歌曲的時間點，播放時自動切換。舞者站太近會提醒你，排好的隊形也能存成圖片，傳給還沒裝 App 的團員。</p>
           </div>
           <div class="vignette">
             <div class="seg" role="group" aria-label="切換隊形">
@@ -328,7 +344,7 @@ footer { padding-block: 40px 56px; }
               <span class="dancer" style="background:var(--gold)">5</span>
               <span class="dancer" style="background:var(--pink)">6</span>
             </div>
-            <p class="warn" data-warn hidden></p>
+            <div class="stage-foot"><p class="warn" data-warn hidden></p><span class="share">分享隊形圖</span></div>
           </div>
         </article>
 
@@ -372,6 +388,35 @@ footer { padding-block: 40px 56px; }
             <div class="invite">＋ 邀請共同編輯者</div>
           </div>
         </article>
+
+        <article class="feat wide">
+          <div>
+            <p class="tag">我的練習</p>
+            <h3>看見自己練了多少</h3>
+            <p>累積時間、練習次數、連續練習天數和完成的目標，都整理在帳號頁。</p>
+          </div>
+          <div class="vignette" aria-hidden="true">
+            <div class="stats">
+              <div><span>累積時間</span><b>18 小時 40 分</b></div>
+              <div><span>練習次數</span><b>23</b></div>
+              <div><span>連續練習</span><b>6 天</b></div>
+              <div><span>完成目標</span><b>7／10 項</b></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="feat wide">
+          <div>
+            <p class="tag">練習提醒</p>
+            <h3>到了練習日會提醒你</h3>
+            <p>選好星期幾和時間，App 會通知你練習。目標到期當天也會提醒。</p>
+          </div>
+          <div class="vignette" aria-hidden="true">
+            <div class="days"><span>日</span><span class="on">一</span><span>二</span><span class="on">三</span><span>四</span><span class="on">五</span><span>六</span><b class="tc">19:00</b></div>
+            <div class="notif"><span class="appicon"></span><div><b>該練舞囉</b><span>今天是練習日，來練一下吧！</span></div></div>
+            <div class="notif"><span class="appicon"></span><div><b>目標今天到期</b><span>副歌轉位</span></div></div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -388,21 +433,21 @@ footer { padding-block: 40px 56px; }
             <p class="when">排練前</p>
             <h3>把作品準備好</h3>
             <p>建立舞蹈專案，匯入練習影片或選一首 Apple Music 的歌，再邀請團員加入。開始排練前，所有人都看得到同一份作品。</p>
-            <div class="pills"><span>建立專案</span><span>匯入影片或音樂</span><span>邀請團員</span></div>
+            <div class="pills"><span>建立專案</span><span>匯入影片或音樂</span><span>邀請團員</span><span>設定練習提醒</span></div>
           </div>
           <div class="step">
             <span class="step-n">2</span>
             <p class="when">排練中</p>
             <h3>專注現在的問題</h3>
-            <p>放慢速度、循環難的片段，在時間點留下筆記。播放時隊形會跟著音樂切換，誰站錯位置馬上看得到。</p>
-            <div class="pills"><span>速度與鏡像</span><span>循環片段</span><span>時間筆記</span><span>隊形跟著音樂</span></div>
+            <p>按下播放先倒數，站好位置再開始。放慢速度、循環難的片段，在時間點留下筆記。播放時隊形會跟著音樂切換，誰站錯位置馬上看得到。</p>
+            <div class="pills"><span>播放前倒數</span><span>速度與鏡像</span><span>循環片段</span><span>時間筆記</span><span>隊形跟著音樂</span></div>
           </div>
           <div class="step">
             <span class="step-n">3</span>
             <p class="when">排練後</p>
             <h3>把成果留給下一次</h3>
-            <p>寫下練了多久、狀態和心得，勾掉完成的目標。下一次打開專案，就能直接接著前進。</p>
-            <div class="pills"><span>練習日誌</span><span>完成目標</span><span>月曆進度</span></div>
+            <p>寫下練了多久、狀態和心得，勾掉完成的目標，把隊形圖傳給團員。下一次打開專案，就能直接接著前進。</p>
+            <div class="pills"><span>練習日誌</span><span>完成目標</span><span>分享隊形圖</span><span>累積練習紀錄</span></div>
           </div>
         </div>
       </div>
@@ -421,7 +466,7 @@ footer { padding-block: 40px 56px; }
           <button type="submit">加入測試名單</button>
         </form>
           <p class="fine" aria-live="polite">只寄送測試與上線通知，隨時可以退出。</p>
-          <p class="specs">iPhone 與 iPad · iOS 26 以上 · 支援繁體中文、English、日本語</p>
+          <p class="specs">iPhone 與 iPad · iOS 26 以上 · 支援繁體中文、English、日本語、한국어</p>
         </div>
       </div>
     </section>
